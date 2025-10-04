@@ -82,22 +82,22 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div className="glass rounded-2xl border border-white/10">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200">
+      <div className="p-8 border-b border-white/10">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="p-2 bg-purple-100 rounded-lg">
-              <Bot className="h-6 w-6 text-purple-600" />
+            <div className="p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl">
+              <Bot className="h-8 w-8 text-purple-400" />
             </div>
-            <div className="ml-3">
-              <h3 className="text-lg font-semibold text-gray-900">AI Purchase Consultation</h3>
-              <p className="text-sm text-gray-500">Get intelligent recommendations before making purchases</p>
+            <div className="ml-4">
+              <h3 className="text-2xl font-bold text-white">AI Purchase Consultation</h3>
+              <p className="text-white/70">Get intelligent recommendations before making purchases</p>
             </div>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="px-4 py-2 bg-purple-600 text-white rounded-md text-sm font-medium hover:bg-purple-700"
+            className="btn-primary px-6 py-3 text-white rounded-xl text-sm font-semibold hover:scale-105 transition-transform"
           >
             {isOpen ? 'Close' : 'Get Advice'}
           </button>
@@ -106,23 +106,23 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
 
       {/* Consultation Form */}
       {isOpen && (
-        <div className="p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Purchase Amount */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-white/70 mb-2">
                   Purchase Amount *
                 </label>
                 <div className="flex">
-                  <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                  <span className="inline-flex items-center px-4 rounded-l-xl border border-r-0 border-white/20 bg-white/10 text-white/70 text-sm">
                     $
                   </span>
                   <input
                     type="number"
                     value={formData.purchaseAmount || ''}
                     onChange={(e) => setFormData({ ...formData, purchaseAmount: parseFloat(e.target.value) || 0 })}
-                    className="flex-1 rounded-r-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500"
+                    className="flex-1 rounded-r-xl border-white/20 bg-white/10 text-white placeholder-white/50 shadow-sm focus:ring-primary focus:border-primary"
                     placeholder="0.00"
                     min="0.01"
                     step="0.01"
@@ -133,13 +133,13 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
 
               {/* Purchase Category */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-white/70 mb-2">
                   Category *
                 </label>
                 <select
                   value={formData.purchaseCategory}
                   onChange={(e) => setFormData({ ...formData, purchaseCategory: e.target.value })}
-                  className="w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500"
+                  className="w-full rounded-xl border-white/20 bg-white/10 text-white shadow-sm focus:ring-primary focus:border-primary"
                   required
                 >
                   <option value="">Select a category</option>
@@ -154,13 +154,13 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-white/70 mb-2">
                 Description *
               </label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500"
+                className="w-full rounded-xl border-white/20 bg-white/10 text-white placeholder-white/50 shadow-sm focus:ring-primary focus:border-primary"
                 rows={3}
                 placeholder="Describe what you're planning to purchase..."
                 required
@@ -169,13 +169,13 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
 
             {/* Preferred Card (Optional) */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-white/70 mb-2">
                 Preferred Card (Optional)
               </label>
               <select
                 value={formData.preferredCard}
                 onChange={(e) => setFormData({ ...formData, preferredCard: e.target.value })}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500"
+                className="w-full rounded-xl border-white/20 bg-white/10 text-white shadow-sm focus:ring-primary focus:border-primary"
               >
                 <option value="">Let AI choose the best card</option>
                 {creditCards.map((card) => (
@@ -187,20 +187,20 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
             </div>
 
             {/* Submit Button */}
-            <div className="flex space-x-3">
+            <div className="flex space-x-4">
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                className="flex-1 btn-primary text-white px-6 py-3 rounded-xl text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
                 {loading ? (
                   <>
-                    <Loader className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader className="h-5 w-5 mr-2 animate-spin" />
                     Getting Recommendation...
                   </>
                 ) : (
                   <>
-                    <Send className="h-4 w-4 mr-2" />
+                    <Send className="h-5 w-5 mr-2" />
                     Get AI Recommendation
                   </>
                 )}
@@ -208,7 +208,7 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50"
+                className="px-6 py-3 border border-white/20 text-white/70 rounded-xl text-sm font-semibold hover:bg-white/10 transition-colors"
               >
                 Reset
               </button>
@@ -217,11 +217,11 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
 
           {/* Error Message */}
           {error && (
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+            <div className="mt-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
               <div className="flex">
                 <AlertCircle className="h-5 w-5 text-red-400" />
                 <div className="ml-3">
-                  <p className="text-sm text-red-800">{error}</p>
+                  <p className="text-sm text-red-300">{error}</p>
                 </div>
               </div>
             </div>
@@ -229,48 +229,48 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
 
           {/* AI Recommendation */}
           {consultation && (
-            <div className="mt-6 space-y-4">
-              <div className="border-t pt-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">AI Recommendation</h4>
+            <div className="mt-8 space-y-6">
+              <div className="border-t border-white/10 pt-8">
+                <h4 className="text-2xl font-bold text-white mb-6">AI Recommendation</h4>
                 
                 {/* Main Recommendation */}
-                <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                <div className="glass rounded-2xl p-6 mb-6">
                   <div className="flex items-start">
-                    <div className={`p-2 rounded-lg ${getImpactColor(consultation.recommendation.creditImpact)}`}>
+                    <div className={`p-3 rounded-xl ${getImpactColor(consultation.recommendation.creditImpact)}`}>
                       {getImpactIcon(consultation.recommendation.creditImpact)}
                     </div>
-                    <div className="ml-3 flex-1">
-                      <h5 className="font-medium text-gray-900 mb-1">
+                    <div className="ml-4 flex-1">
+                      <h5 className="font-bold text-white text-lg mb-2">
                         Recommended: {consultation.recommendation.recommendedCard}
                       </h5>
-                      <p className="text-sm text-gray-700 mb-2">
+                      <p className="text-white/80 mb-3">
                         {consultation.recommendation.reasoning}
                       </p>
                       <div className="flex items-center">
-                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getImpactColor(consultation.recommendation.creditImpact)}`}>
+                        <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${getImpactColor(consultation.recommendation.creditImpact)}`}>
                           {consultation.recommendation.creditImpact} credit impact
                         </span>
                       </div>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-600 mt-2">
+                  <p className="text-white/70 mt-3">
                     {consultation.recommendation.impactExplanation}
                   </p>
                 </div>
 
                 {/* Alternative Options */}
                 {consultation.alternatives.length > 0 && (
-                  <div className="mb-4">
-                    <h5 className="font-medium text-gray-900 mb-3">Alternative Options</h5>
-                    <div className="space-y-3">
+                  <div className="mb-6">
+                    <h5 className="font-bold text-white text-lg mb-4">Alternative Options</h5>
+                    <div className="space-y-4">
                       {consultation.alternatives.map((alt, index) => (
-                        <div key={index} className="border border-gray-200 rounded-lg p-3">
-                          <h6 className="font-medium text-gray-900 mb-2">{alt.cardName}</h6>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div key={index} className="glass rounded-xl p-4">
+                          <h6 className="font-bold text-white mb-3">{alt.cardName}</h6>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {alt.pros.length > 0 && (
                               <div>
-                                <p className="text-xs font-medium text-green-700 mb-1">Pros:</p>
-                                <ul className="text-xs text-green-600 space-y-1">
+                                <p className="text-sm font-semibold text-green-400 mb-2">Pros:</p>
+                                <ul className="text-sm text-green-300 space-y-1">
                                   {alt.pros.map((pro, i) => (
                                     <li key={i}>• {pro}</li>
                                   ))}
@@ -279,8 +279,8 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
                             )}
                             {alt.cons.length > 0 && (
                               <div>
-                                <p className="text-xs font-medium text-red-700 mb-1">Cons:</p>
-                                <ul className="text-xs text-red-600 space-y-1">
+                                <p className="text-sm font-semibold text-red-400 mb-2">Cons:</p>
+                                <ul className="text-sm text-red-300 space-y-1">
                                   {alt.cons.map((con, i) => (
                                     <li key={i}>• {con}</li>
                                   ))}
@@ -297,15 +297,15 @@ const PurchaseConsultation: React.FC<PurchaseConsultationProps> = ({ creditCards
                 {/* Tips */}
                 {consultation.tips.length > 0 && (
                   <div>
-                    <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                      <Lightbulb className="h-4 w-4 mr-2 text-yellow-500" />
+                    <h5 className="font-bold text-white text-lg mb-4 flex items-center">
+                      <Lightbulb className="h-6 w-6 mr-3 text-yellow-400" />
                       Tips & Recommendations
                     </h5>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {consultation.tips.map((tip, index) => (
                         <li key={index} className="flex items-start">
-                          <span className="flex-shrink-0 w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3"></span>
-                          <span className="text-sm text-gray-700">{tip}</span>
+                          <span className="flex-shrink-0 w-3 h-3 bg-yellow-400 rounded-full mt-2 mr-4"></span>
+                          <span className="text-white/80">{tip}</span>
                         </li>
                       ))}
                     </ul>

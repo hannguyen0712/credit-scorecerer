@@ -1,5 +1,6 @@
 import React from 'react';
 import { SpendingData } from '../types';
+import { useTheme } from '../contexts/ThemeContext';
 import { CreditCard, TrendingUp, TrendingDown, DollarSign, PieChart } from 'lucide-react';
 
 interface StatsOverviewProps {
@@ -17,6 +18,7 @@ const StatsOverview: React.FC<StatsOverviewProps> = ({
   overallUtilization,
   spendingData,
 }) => {
+  const { isDark } = useTheme();
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -39,56 +41,56 @@ const StatsOverview: React.FC<StatsOverviewProps> = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       {/* Total Credit Limit */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="glass card-hover rounded-2xl p-6">
         <div className="flex items-center">
-          <div className="p-2 bg-blue-100 rounded-lg">
-            <CreditCard className="h-6 w-6 text-blue-600" />
+          <div className="p-3 bg-primary/20 rounded-xl">
+            <CreditCard className="h-8 w-8 text-primary" />
           </div>
           <div className="ml-4">
-            <p className="text-sm font-medium text-gray-600">Total Credit Limit</p>
-            <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalCreditLimit)}</p>
+            <p className={`text-sm font-medium ${isDark ? 'text-white/70' : 'text-gray-600'}`}>Total Credit Limit</p>
+            <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{formatCurrency(totalCreditLimit)}</p>
           </div>
         </div>
       </div>
 
       {/* Current Balance */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="glass card-hover rounded-2xl p-6">
         <div className="flex items-center">
-          <div className="p-2 bg-red-100 rounded-lg">
-            <DollarSign className="h-6 w-6 text-red-600" />
+          <div className="p-3 bg-red-500/20 rounded-xl">
+            <DollarSign className="h-8 w-8 text-red-400" />
           </div>
           <div className="ml-4">
-            <p className="text-sm font-medium text-gray-600">Current Balance</p>
-            <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalBalance)}</p>
+            <p className={`text-sm font-medium ${isDark ? 'text-white/70' : 'text-gray-600'}`}>Current Balance</p>
+            <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{formatCurrency(totalBalance)}</p>
           </div>
         </div>
       </div>
 
       {/* Available Credit */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="glass card-hover rounded-2xl p-6">
         <div className="flex items-center">
-          <div className="p-2 bg-green-100 rounded-lg">
-            <TrendingUp className="h-6 w-6 text-green-600" />
+          <div className="p-3 bg-green-500/20 rounded-xl">
+            <TrendingUp className="h-8 w-8 text-green-400" />
           </div>
           <div className="ml-4">
-            <p className="text-sm font-medium text-gray-600">Available Credit</p>
-            <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalAvailableCredit)}</p>
+            <p className={`text-sm font-medium ${isDark ? 'text-white/70' : 'text-gray-600'}`}>Available Credit</p>
+            <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{formatCurrency(totalAvailableCredit)}</p>
           </div>
         </div>
       </div>
 
       {/* Credit Utilization */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="glass card-hover rounded-2xl p-6">
         <div className="flex items-center">
-          <div className={`p-2 rounded-lg ${getUtilizationBgColor(overallUtilization)}`}>
-            <PieChart className={`h-6 w-6 ${getUtilizationColor(overallUtilization)}`} />
+          <div className={`p-3 rounded-xl ${getUtilizationBgColor(overallUtilization)}`}>
+            <PieChart className={`h-8 w-8 ${getUtilizationColor(overallUtilization)}`} />
           </div>
           <div className="ml-4">
-            <p className="text-sm font-medium text-gray-600">Credit Utilization</p>
+            <p className={`text-sm font-medium ${isDark ? 'text-white/70' : 'text-gray-600'}`}>Credit Utilization</p>
             <p className={`text-2xl font-bold ${getUtilizationColor(overallUtilization)}`}>
               {overallUtilization.toFixed(1)}%
             </p>
-            <p className="text-xs text-gray-500">
+            <p className={`text-xs ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
               {overallUtilization > 30 ? 'High utilization' : 
                overallUtilization > 10 ? 'Good utilization' : 'Excellent utilization'}
             </p>
@@ -98,42 +100,42 @@ const StatsOverview: React.FC<StatsOverviewProps> = ({
 
       {/* Spending Overview */}
       {spendingData && (
-        <div className="md:col-span-2 lg:col-span-4 bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Spending Overview</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="md:col-span-2 lg:col-span-4 glass rounded-2xl p-8">
+          <h3 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Spending Overview</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Monthly Spending */}
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-medium text-gray-600">This Month</p>
-                <p className="text-sm text-gray-500">
+              <div className="flex items-center justify-between mb-4">
+                <p className={`text-sm font-medium ${isDark ? 'text-white/70' : 'text-gray-600'}`}>This Month</p>
+                <p className={`text-sm ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
                   {formatCurrency(spendingData.totalSpent)} / {formatCurrency(spendingData.budget)}
                 </p>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="w-full bg-white/10 rounded-full h-3">
                 <div 
-                  className="bg-primary-600 h-2 rounded-full" 
+                  className="bg-gradient-to-r from-primary to-secondary h-3 rounded-full transition-all duration-500" 
                   style={{ width: `${(spendingData.totalSpent / spendingData.budget) * 100}%` }}
                 ></div>
               </div>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className={`text-xs mt-2 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
                 {((spendingData.totalSpent / spendingData.budget) * 100).toFixed(1)}% of budget used
               </p>
             </div>
 
             {/* Spending by Category */}
             <div>
-              <p className="text-sm font-medium text-gray-600 mb-3">Spending by Category</p>
-              <div className="space-y-2">
+              <p className={`text-sm font-medium mb-4 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>Spending by Category</p>
+              <div className="space-y-3">
                 {spendingData.categories.slice(0, 3).map((category, index) => (
-                  <div key={index} className="flex items-center justify-between">
+                  <div key={index} className="flex items-center justify-between glass rounded-xl p-3">
                     <div className="flex items-center">
                       <div 
-                        className="w-3 h-3 rounded-full mr-2" 
+                        className="w-4 h-4 rounded-full mr-3 shadow-lg" 
                         style={{ backgroundColor: category.color }}
                       ></div>
-                      <span className="text-sm text-gray-700">{category.name}</span>
+                      <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>{category.name}</span>
                     </div>
-                    <span className="text-sm font-medium text-gray-900">
+                    <span className={`text-sm font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       {formatCurrency(category.spent)}
                     </span>
                   </div>

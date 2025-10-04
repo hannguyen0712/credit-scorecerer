@@ -1,12 +1,15 @@
 import React from 'react';
 import Dashboard from './components/Dashboard';
+import { ThemeProvider } from './contexts/ThemeContext';
 import './index.css';
 
 function App() {
   return (
-    <div className="App">
-      <Dashboard />
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Dashboard />
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -63,21 +63,21 @@ const CreditCardItem: React.FC<CreditCardItemProps> = ({ card, onPayment }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+    <div className="glass card-hover rounded-2xl border border-white/10">
       {/* Card Header */}
-      <div className="p-6 border-b border-gray-200">
+      <div className="p-6 border-b border-white/10">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="p-2 bg-primary-100 rounded-lg">
-              <CreditCardIcon className="h-5 w-5 text-primary-600" />
+            <div className="p-3 bg-primary/20 rounded-xl">
+              <CreditCardIcon className="h-6 w-6 text-primary" />
             </div>
-            <div className="ml-3">
-              <h3 className="font-semibold text-gray-900">{card.name}</h3>
-              <p className="text-sm text-gray-500">{card.issuer} • {card.cardNumber}</p>
+            <div className="ml-4">
+              <h3 className="font-bold text-white text-lg">{card.name}</h3>
+              <p className="text-sm text-white/60">{card.issuer} • {card.cardNumber}</p>
             </div>
           </div>
-          <button className="p-1 hover:bg-gray-100 rounded">
-            <MoreVertical className="h-4 w-4 text-gray-400" />
+          <button className="p-2 hover:bg-white/10 rounded-xl transition-colors">
+            <MoreVertical className="h-5 w-5 text-white/60" />
           </button>
         </div>
       </div>
@@ -85,34 +85,34 @@ const CreditCardItem: React.FC<CreditCardItemProps> = ({ card, onPayment }) => {
       {/* Card Details */}
       <div className="p-6">
         {/* Balance and Credit Info */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-2 gap-6 mb-6">
           <div>
-            <p className="text-sm text-gray-600">Current Balance</p>
-            <p className="text-lg font-semibold text-gray-900">{formatCurrency(card.currentBalance)}</p>
+            <p className="text-sm text-white/70 mb-1">Current Balance</p>
+            <p className="text-xl font-bold text-white">{formatCurrency(card.currentBalance)}</p>
           </div>
           <div>
-            <p className="text-sm text-gray-600">Available Credit</p>
-            <p className="text-lg font-semibold text-green-600">{formatCurrency(card.availableCredit)}</p>
+            <p className="text-sm text-white/70 mb-1">Available Credit</p>
+            <p className="text-xl font-bold text-green-400">{formatCurrency(card.availableCredit)}</p>
           </div>
         </div>
 
         {/* Credit Limit and Utilization */}
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-600">Credit Limit</span>
-            <span className="text-sm font-medium text-gray-900">{formatCurrency(card.creditLimit)}</span>
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-sm text-white/70">Credit Limit</span>
+            <span className="text-sm font-medium text-white">{formatCurrency(card.creditLimit)}</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-white/10 rounded-full h-3">
             <div 
-              className={`h-2 rounded-full ${getUtilizationBgColor(utilization)}`}
+              className={`h-3 rounded-full transition-all duration-500 ${getUtilizationBgColor(utilization)}`}
               style={{ width: `${Math.min(utilization, 100)}%` }}
             ></div>
           </div>
-          <div className="flex justify-between items-center mt-1">
-            <span className={`text-xs font-medium ${getUtilizationColor(utilization)}`}>
+          <div className="flex justify-between items-center mt-2">
+            <span className={`text-sm font-bold ${getUtilizationColor(utilization)}`}>
               {utilization.toFixed(1)}% utilized
             </span>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-white/50">
               {utilization > 30 ? 'High utilization' : 
                utilization > 10 ? 'Good utilization' : 'Excellent utilization'}
             </span>
@@ -120,50 +120,50 @@ const CreditCardItem: React.FC<CreditCardItemProps> = ({ card, onPayment }) => {
         </div>
 
         {/* Rewards and Interest Rate */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-2 gap-6 mb-6">
           <div>
-            <p className="text-sm text-gray-600">Rewards</p>
-            <p className="text-sm font-medium text-gray-900">{getRewardsText()}</p>
+            <p className="text-sm text-white/70 mb-1">Rewards</p>
+            <p className="text-sm font-bold text-white">{getRewardsText()}</p>
           </div>
           <div>
-            <p className="text-sm text-gray-600">Interest Rate</p>
-            <p className="text-sm font-medium text-gray-900">{card.interestRate}% APR</p>
+            <p className="text-sm text-white/70 mb-1">Interest Rate</p>
+            <p className="text-sm font-bold text-white">{card.interestRate}% APR</p>
           </div>
         </div>
 
         {/* Payment Info */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-2 gap-6 mb-6">
           <div className="flex items-center">
-            <Calendar className="h-4 w-4 text-gray-400 mr-2" />
+            <Calendar className="h-5 w-5 text-white/60 mr-3" />
             <div>
-              <p className="text-xs text-gray-600">Due Date</p>
-              <p className="text-sm font-medium text-gray-900">
+              <p className="text-xs text-white/60">Due Date</p>
+              <p className="text-sm font-bold text-white">
                 {new Date(card.dueDate).toLocaleDateString()}
               </p>
             </div>
           </div>
           <div>
-            <p className="text-xs text-gray-600">Min Payment</p>
-            <p className="text-sm font-medium text-gray-900">{formatCurrency(card.minimumPayment)}</p>
+            <p className="text-xs text-white/60 mb-1">Min Payment</p>
+            <p className="text-sm font-bold text-white">{formatCurrency(card.minimumPayment)}</p>
           </div>
         </div>
 
         {/* Payment Form */}
         {showPaymentForm ? (
-          <div className="border-t pt-4">
-            <div className="mb-3">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="border-t border-white/10 pt-6">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-white/70 mb-2">
                 Payment Amount
               </label>
               <div className="flex">
-                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                <span className="inline-flex items-center px-4 rounded-l-xl border border-r-0 border-white/20 bg-white/10 text-white/70 text-sm">
                   $
                 </span>
                 <input
                   type="number"
                   value={paymentAmount}
                   onChange={(e) => setPaymentAmount(e.target.value)}
-                  className="flex-1 rounded-r-md border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
+                  className="flex-1 rounded-r-xl border-white/20 bg-white/10 text-white placeholder-white/50 shadow-sm focus:ring-primary focus:border-primary"
                   placeholder="0.00"
                   max={card.currentBalance}
                   min="0.01"
@@ -171,11 +171,11 @@ const CreditCardItem: React.FC<CreditCardItemProps> = ({ card, onPayment }) => {
                 />
               </div>
             </div>
-            <div className="flex space-x-2">
+            <div className="flex space-x-3">
               <button
                 onClick={handlePayment}
                 disabled={isProcessing || !paymentAmount || parseFloat(paymentAmount) <= 0}
-                className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 btn-primary text-white px-6 py-3 rounded-xl text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
                 {isProcessing ? 'Processing...' : 'Make Payment'}
               </button>
@@ -184,23 +184,23 @@ const CreditCardItem: React.FC<CreditCardItemProps> = ({ card, onPayment }) => {
                   setShowPaymentForm(false);
                   setPaymentAmount('');
                 }}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50"
+                className="px-6 py-3 border border-white/20 text-white/70 rounded-xl text-sm font-semibold hover:bg-white/10 transition-colors"
               >
                 Cancel
               </button>
             </div>
           </div>
         ) : (
-          <div className="flex space-x-2">
+          <div className="flex space-x-3">
             <button
               onClick={() => setShowPaymentForm(true)}
-              className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 flex items-center justify-center"
+              className="flex-1 btn-primary text-white px-6 py-3 rounded-xl text-sm font-semibold flex items-center justify-center"
             >
-              <DollarSign className="h-4 w-4 mr-1" />
+              <DollarSign className="h-5 w-5 mr-2" />
               Make Payment
             </button>
-            <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50 flex items-center justify-center">
-              <TrendingUp className="h-4 w-4 mr-1" />
+            <button className="px-6 py-3 border border-white/20 text-white/70 rounded-xl text-sm font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
+              <TrendingUp className="h-5 w-5 mr-2" />
               View Details
             </button>
           </div>

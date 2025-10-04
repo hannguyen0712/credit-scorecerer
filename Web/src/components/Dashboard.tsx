@@ -4,9 +4,12 @@ import CreditService from '../services/CreditService';
 import CreditCardItem from './CreditCardItem';
 import StatsOverview from './StatsOverview';
 import PurchaseConsultation from './PurchaseConsultation';
+import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../contexts/ThemeContext';
 import { CreditCard as CreditCardIcon, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
+  const { isDark } = useTheme();
   const [creditCards, setCreditCards] = useState<CreditCard[]>([]);
   const [creditScore, setCreditScore] = useState<CreditScore | null>(null);
   const [spendingData, setSpendingData] = useState<SpendingData | null>(null);
@@ -48,10 +51,10 @@ const Dashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading your dashboard...</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-transparent border-t-primary border-r-secondary mx-auto"></div>
+          <p className="mt-6 text-white/70 text-lg">Loading your dashboard...</p>
         </div>
       </div>
     );
@@ -59,16 +62,18 @@ const Dashboard: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="text-center">
-          <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-          <p className="text-red-600 mb-4">{error}</p>
-          <button 
-            onClick={loadDashboardData}
-            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
-          >
-            Try Again
-          </button>
+          <div className="glass rounded-2xl p-8 max-w-md mx-auto">
+            <AlertCircle className="h-16 w-16 text-red-400 mx-auto mb-6 animate-pulse" />
+            <p className="text-red-300 mb-6 text-lg">{error}</p>
+            <button 
+              onClick={loadDashboardData}
+              className="btn-primary px-6 py-3 text-white rounded-xl font-semibold hover:scale-105 transition-transform"
+            >
+              Try Again
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -80,21 +85,22 @@ const Dashboard: React.FC = () => {
   const overallUtilization = (totalBalance / totalCreditLimit) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-dark">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="glass border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+          <div className="flex justify-between items-center py-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Credit Dashboard</h1>
-              <p className="text-gray-600">Manage your credit cards and optimize your spending</p>
+              <h1 className="text-4xl font-bold gradient-text">Credit Dashboard</h1>
+              <p className={`text-lg mt-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>Manage your credit cards and optimize your spending</p>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
+              <ThemeToggle />
               {creditScore && (
-                <div className="text-right">
-                  <p className="text-sm text-gray-600">Credit Score</p>
-                  <p className="text-2xl font-bold text-primary-600">{creditScore.score}</p>
-                  <p className="text-sm text-gray-500">{creditScore.category}</p>
+                <div className="glass rounded-2xl p-6 text-right">
+                  <p className={`text-sm mb-1 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>Credit Score</p>
+                  <p className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{creditScore.score}</p>
+                  <p className="text-sm text-primary font-semibold">{creditScore.category}</p>
                 </div>
               )}
             </div>
@@ -120,18 +126,18 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Credit Cards Section */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 flex items-center">
-              <CreditCardIcon className="h-6 w-6 mr-2" />
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold text-white flex items-center">
+              <CreditCardIcon className="h-8 w-8 mr-3 text-primary" />
               Your Credit Cards
             </h2>
-            <span className="text-sm text-gray-500">
+            <span className="glass px-4 py-2 rounded-full text-white/70 text-sm font-medium">
               {creditCards.length} card{creditCards.length !== 1 ? 's' : ''}
             </span>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {creditCards.map((card) => (
               <CreditCardItem
                 key={card.id}
@@ -143,29 +149,23 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <TrendingUp className="h-5 w-5 text-primary-600 mr-3" />
-              <div className="text-left">
-                <p className="font-medium text-gray-900">View Credit Report</p>
-                <p className="text-sm text-gray-500">Check your credit history</p>
-              </div>
+        <div className="glass rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-white mb-8">Quick Actions</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <button className="glass card-hover rounded-xl p-6 text-left group">
+              <TrendingUp className="h-8 w-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <p className="font-semibold text-white text-lg mb-2">View Credit Report</p>
+              <p className="text-white/60">Check your credit history</p>
             </button>
-            <button className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <DollarSign className="h-5 w-5 text-primary-600 mr-3" />
-              <div className="text-left">
-                <p className="font-medium text-gray-900">Make Payment</p>
-                <p className="text-sm text-gray-500">Pay down your balances</p>
-              </div>
+            <button className="glass card-hover rounded-xl p-6 text-left group">
+              <DollarSign className="h-8 w-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <p className="font-semibold text-white text-lg mb-2">Make Payment</p>
+              <p className="text-white/60">Pay down your balances</p>
             </button>
-            <button className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <AlertCircle className="h-5 w-5 text-primary-600 mr-3" />
-              <div className="text-left">
-                <p className="font-medium text-gray-900">Get Alerts</p>
-                <p className="text-sm text-gray-500">Set up payment reminders</p>
-              </div>
+            <button className="glass card-hover rounded-xl p-6 text-left group">
+              <AlertCircle className="h-8 w-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <p className="font-semibold text-white text-lg mb-2">Get Alerts</p>
+              <p className="text-white/60">Set up payment reminders</p>
             </button>
           </div>
         </div>
