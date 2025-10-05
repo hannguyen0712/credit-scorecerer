@@ -1,6 +1,6 @@
-# AI Credit Optimizer
+# Credit Scorecerer - Mobile version
 
-A mobile-first personal finance tool designed to help young adults improve their credit health through artificial intelligence. The app uses predictive modeling, personalized guidance, and spending analysis to optimize users' credit card activity in real time.
+A personal finance tool designed to target young adults and help them improve their credit health through artificial intelligence. The app uses predictive modeling, personalized guidance, and spending analysis to optimize users' credit card activity in real time.
 
 ## Features
 
@@ -148,16 +148,11 @@ The app integrates with various financial APIs to provide real-time data:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
-
-For support, email support@aicreditoptimizer.com or join our Discord community.
+For support, please reach out to Han.
 
 ## Roadmap
-
 - [ ] Advanced AI credit score prediction
 - [ ] Integration with more financial institutions
 - [ ] Social features for financial goals
