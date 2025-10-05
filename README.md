@@ -1,4 +1,6 @@
 # credit-scorecerer
-CreditScorecerer is a mobile-first personal finance tool that help users improve their credit health. The app uses predictive modeling, personalized guidance, and spending analysis to optimize users’ credit card activity in real time by recommending payment strategies, usage timing, reward-maximizing purchases so users stay on top of their credit.
+CreditScorecerer is a personal finance tool that help users improve their credit health. The app uses predictive modeling, personalized guidance, and spending analysis to optimize users’ credit card activity in real time by recommending payment strategies, usage timing, reward-maximizing purchases so users stay on top of their credit.
 
-Ideation credit - my friend Erick Li.
+With more than 50 million young credit card users in the U.S. and growing interest in AI-powered tools, Credit Scorecerer meets a clear and underserved need. Our mission is to simplify credit education, reduce financial stress, and promote upward mobility through smarter, tech-enabled decision-making.
+
+Ideation credit, my hackathon friend Erick Li.
