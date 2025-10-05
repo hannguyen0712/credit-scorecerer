@@ -30,6 +30,8 @@ An AI assistant built on Gemini API to answer user questions about credit, debt 
 
 
 # Ongoing implementations
+  • Integrating VISA DPS Card and Account Services APIs to calculate users' total checking balance to evaluate potential for credit card payments and provide better financial guidance https://developer.visa.com/capabilities/dps-card-and-account-services
+  
   • Bank account securely linked through Plaid API for cached and real-time account balance for free https://plaid.com/docs/balance/#cached-and-realtime-balance
 
   • Soft credit pulls through a third-party API called CRS https://crsecreditmonitoringapi.redoc.ly/tag/DevTools-Web-Widget-with-Integrated-Authentication/ that allows users to securely view their Equifax report data on Credit Scorecerer.
