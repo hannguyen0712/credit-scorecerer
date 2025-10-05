@@ -4,8 +4,9 @@
   "description": "Credit card management web app with AI consultation",
   "private": true,
   "dependencies": {
+    "@google/genai": "^1.22.0",
     "@google/generative-ai": "^0.1.0",
-    "@types/node": "^16.18.0",
+    "@supabase/supabase-js": "^2.58.0",
     "axios": "^1.4.0",
     "lucide-react": "^0.263.1",
     "react": "^18.3.1",
@@ -38,8 +39,10 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^24.6.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@vercel/node": "^5.3.24",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.3.0",

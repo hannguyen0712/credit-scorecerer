@@ -4,3 +4,8 @@ Web/node_modules/
 **/.eslintcache
 **/*.tsbuildinfo
 Web/.vercel/
+
+**/node_modules/
+**/.eslintcache
+**/*.tsbuildinfo
+**/.vercel/

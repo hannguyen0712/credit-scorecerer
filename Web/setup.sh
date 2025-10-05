@@ -55,3 +55,4 @@ echo "2. Update the REACT_APP_GEMINI_API_KEY in your .env file"
 echo "3. Run 'npm start' to start the development server"
 echo ""
 echo "The app will be available at: http://localhost:3000"
+

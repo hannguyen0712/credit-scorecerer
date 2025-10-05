@@ -103,6 +103,59 @@ code {
   animation: float 3s ease-in-out infinite;
 }
 
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+@keyframes happy-bounce {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(2deg); }
+  75% { transform: translateY(-3px) rotate(-2deg); }
+}
+
+.animate-happy-bounce {
+  animation: happy-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
 /* Glass morphism effect */
 .glass {
   backdrop-filter: blur(10px);

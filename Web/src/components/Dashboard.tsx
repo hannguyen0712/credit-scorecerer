@@ -5,11 +5,14 @@ import CreditCardItem from './CreditCardItem';
 import StatsOverview from './StatsOverview';
 import PurchaseConsultation from './PurchaseConsultation';
 import ThemeToggle from './ThemeToggle';
+import AIAssistant from './AIAssistant';
 import { useTheme } from '../contexts/ThemeContext';
-import { CreditCard as CreditCardIcon, TrendingUp, DollarSign, AlertCircle } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import { CreditCard as CreditCardIcon, TrendingUp, DollarSign, AlertCircle, User, LogOut } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   const { isDark } = useTheme();
+  const { user, logout } = useAuth();
   const [creditCards, setCreditCards] = useState<CreditCard[]>([]);
   const [creditScore, setCreditScore] = useState<CreditScore | null>(null);
   const [spendingData, setSpendingData] = useState<SpendingData | null>(null);
@@ -95,6 +98,28 @@ const Dashboard: React.FC = () => {
               <p className={`text-lg mt-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>Manage your credit cards and optimize your spending</p>
             </div>
             <div className="flex items-center space-x-6">
+              {/* User Info */}
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2">
+                  <User className={`h-5 w-5 ${isDark ? 'text-white/60' : 'text-gray-500'}`} />
+                  <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    {user?.name || 'User'}
+                  </span>
+                </div>
+                <div className={`h-6 w-px ${isDark ? 'bg-white/20' : 'bg-gray-300'}`} />
+                <button
+                  onClick={logout}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors ${
+                    isDark 
+                      ? 'text-white/60 hover:text-white hover:bg-white/10' 
+                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                  }`}
+                  title="Logout"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span className="text-sm">Logout</span>
+                </button>
+              </div>
               <ThemeToggle />
               {creditScore && (
                 <div className="glass rounded-2xl p-6 text-right">
@@ -170,6 +195,9 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* AI Assistant */}
+      <AIAssistant />
     </div>
   );
 };

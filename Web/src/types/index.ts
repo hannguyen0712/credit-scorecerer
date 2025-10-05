@@ -96,3 +96,34 @@ export interface User {
   creditScore: CreditScore;
   creditCards: CreditCard[];
 }
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  name: string;
+  createdAt: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface SignUpRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface AuthResponse {
+  user: AuthUser;
+  token: string;
+}
+
+export interface AuthState {
+  user: AuthUser | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+}
+
