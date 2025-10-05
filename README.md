@@ -35,7 +35,7 @@ An AI assistant built on Gemini API to answer user questions about credit, debt 
   • Soft credit pulls through a third-party API called CRS https://crsecreditmonitoringapi.redoc.ly/tag/DevTools-Web-Widget-with-Integrated-Authentication/ that allows users to securely view their Equifax report data on Credit Scorecerer.
 
 
-More documentation available within the Web repository.
+More documentation available within the Web and Mobile repository respectively for their features and developments. Currently, most of the developments are for web.
 
 [Ideation credit, a hackathon friend of mine, Erick Li.]
 
