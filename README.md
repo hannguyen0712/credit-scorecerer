@@ -32,7 +32,7 @@ An AI assistant built on Gemini API to answer user questions about credit, debt 
 # Ongoing implementations
   • Bank account securely linked through Plaid API for cached and real-time account balance for free https://plaid.com/docs/balance/#cached-and-realtime-balance
 
-  • Soft-credit pull through a third-party API called CRS https://crsecreditmonitoringapi.redoc.ly/tag/DevTools-Web-Widget-with-Integrated-Authentication/ that allows users to securely view their Equifax report data on Credit Scorecerer.
+  • Soft credit pulls through a third-party API called CRS https://crsecreditmonitoringapi.redoc.ly/tag/DevTools-Web-Widget-with-Integrated-Authentication/ that allows users to securely view their Equifax report data on Credit Scorecerer.
 
 
 More documentation available within the Web repository.
