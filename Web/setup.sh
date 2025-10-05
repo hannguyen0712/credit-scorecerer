@@ -56,3 +56,4 @@ echo "3. Run 'npm start' to start the development server"
 echo ""
 echo "The app will be available at: http://localhost:3000"
 
+

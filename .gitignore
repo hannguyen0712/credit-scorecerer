@@ -1,11 +1,15 @@
+.env
 
-# Build artifacts
-Web/node_modules/
-**/.eslintcache
-**/*.tsbuildinfo
-Web/.vercel/
+.DS_Store
 
 **/node_modules/
 **/.eslintcache
 **/*.tsbuildinfo
+
 **/.vercel/
+
+**/dist/
+
+**/build/
+**/.next/
+**/out/

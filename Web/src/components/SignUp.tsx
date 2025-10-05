@@ -229,3 +229,4 @@ const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
 };
 
 export default SignUp;
+
