@@ -6,6 +6,8 @@
       "dom.iterable",
       "es6"
     ],
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
