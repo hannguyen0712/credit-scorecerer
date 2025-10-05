@@ -1,0 +1,6 @@
+
+# Build artifacts
+Web/node_modules/
+**/.eslintcache
+**/*.tsbuildinfo
+Web/.vercel/
